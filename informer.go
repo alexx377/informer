@@ -7,11 +7,50 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"path"
 )
 
 //Баннер при входе
 func PrintBanner() {
 	fmt.Println(STRING_BANNER)
+}
+
+//Сохранение данных в файл(резервное)
+func SaveFile(Folder string, FileName string, Data string) {
+	//Проверка существования директории
+	fileInfo, err := os.Stat(Folder)
+	if err != nil {
+		if os.IsNotExist(err) {
+			//Директория не существует, нужно создать
+			err = os.Mkdir(Folder, 0777)
+			if err != nil {
+				//Директория не создана
+				fmt.Println(STRING_LOCAL_SAVE_ERROR, err.Error())
+				return
+			}
+		} else {
+			//Другие ошибки
+			fmt.Println(STRING_LOCAL_SAVE_ERROR, err.Error())
+			return
+		}
+	}
+
+	//Проверка, точно ли по указанному пути директория
+	if fileInfo.IsDir() {
+		//Директория существует, пробуем сохранять файл
+		file, err := os.Create(path.Join(Folder, FileName))
+		if err != nil {
+			fmt.Println(STRING_LOCAL_SAVE_ERROR, err.Error())
+			return
+		}
+		defer file.Close()
+
+		_, err = file.WriteString(string(Data))
+		if err != nil {
+			fmt.Println(STRING_LOCAL_SAVE_ERROR, err.Error())
+			return
+		}
+	}
 }
 
 //Точка входа
@@ -72,6 +111,16 @@ func main() {
 		os.Exit(1)
 	}
 
-	//Заглушка
-	fmt.Println(string(jsonInfo))
+	//Сохранение собранных данных в локальный файл
+	//SaveFile(currentSettings.Storage, mainInfo.Location+".json", string(jsonInfo))
+	fmt.Println(STRING_DATA_LOCAL_SAVED)
+
+	//При наличии связи, передача данных на сервер
+	if serverOnLink {
+		SendDataToServer(currentSettings.Server, jsonInfo)
+	}
+
+	//Завершение
+	fmt.Println(LINE)
+	fmt.Println(STRING_READY_MESSAGE)
 }

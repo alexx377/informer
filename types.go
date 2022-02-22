@@ -6,11 +6,11 @@ package main
 
 //Префиксы мест расположения
 type Prefix struct {
-	Prefix      string `json: "prefix"`
-	Description string `json: "description"`
+	Prefix      string `json:"prefix"`
+	Description string `json:"description"`
 }
 
-//Общие настройки программы.
+//Общие настройки программы
 type CommonSettings struct {
 	Server   string   `json:"server"`
 	Storage  string   `json:"storage"`
@@ -18,47 +18,47 @@ type CommonSettings struct {
 	Prefixes []Prefix `json:"prefixes"`
 }
 
-//Данные о материнской плате.
+//Данные о материнской плате
 type InfoBaseBoard struct {
 	Model        string `json:"model"`
 	SerialNumber string `json:"serialNumber"`
 }
 
-//Данные о процессоре.
+//Данные о процессоре
 type InfoProcessor struct {
 	Model         string `json:"model"`
 	NumberOfCores uint64 `json:"numberOfCores"`
 	Clock         uint64 `json:"clock"`
 }
 
-//Данные об отдельном модуле оперативной памяти.
+//Данные об отдельном модуле оперативной памяти
 type InfoMemoryUnit struct {
 	Model        string `json:"model"`
 	SerialNumber string `json:"serialNumber"`
 	Capacity     uint64 `json:"capacity"`
 }
 
-//Данные об оперативной памяти вцелом.
+//Данные об оперативной памяти вцелом
 type InfoMemory struct {
 	TotalCapacity uint64           `json:"totalCapacity"`
 	Units         []InfoMemoryUnit `json:"units"`
 }
 
-//Данные о видеоконтроллере.
+//Данные о видеоконтроллере
 type InfoVideoController struct {
 	Model  string `json:"model"`
 	Chip   string `json:"chip"`
 	Memory uint64 `json:"memory"`
 }
 
-//Данные о жестком диске.
+//Данные о жестком диске
 type InfoHardDisk struct {
-	Model        string `json:""`
-	SerialNumber string `json:""`
-	Capacity     uint64 `json:""`
+	Model        string `json:"model"`
+	SerialNumber string `json:"serealNumber"`
+	Capacity     uint64 `json:"capacity"`
 }
 
-//Данные о сетевом адаптере.
+//Данные о сетевом адаптере
 type InfoNetworkAdapter struct {
 	Name            string   `json:"name"`
 	HardwareAddress string   `json:"hardwareAddress"`
@@ -66,7 +66,7 @@ type InfoNetworkAdapter struct {
 	IsUp            bool     `json:"isUp"`
 }
 
-//Итоговая информация о системе.
+//Итоговая информация о системе
 type Info struct {
 	Location         string                `json:"location"`
 	Description      string                `json:"description"`

@@ -13,7 +13,7 @@ import (
 
 //Проверка доступности сервера
 func NetServerPing(ServerAddr string) bool {
-	resp, err := http.Get("http://" + ServerAddr + "/ping")
+	resp, err := http.Get(ServerAddr + URL_PING)
 	if err != nil {
 		fmt.Println(STRING_ERROR_CONNECT_SERVER, err.Error())
 
@@ -49,7 +49,7 @@ func NetServerPing(ServerAddr string) bool {
 func NetLocationExist(ServerAddr string, Location string) bool {
 	req := []byte(`{ "location": "` + Location + `" }`)
 
-	resp, err := http.Post("http://"+ServerAddr+"/check", "", bytes.NewBuffer(req))
+	resp, err := http.Post(ServerAddr+URL_CHECK_LOCATION, "", bytes.NewBuffer(req))
 	if err != nil {
 		fmt.Println(STRING_ERROR_CONNECT_SERVER, err.Error())
 
@@ -76,4 +76,25 @@ func NetLocationExist(ServerAddr string, Location string) bool {
 		return false
 	}
 	return true
+}
+
+//Отправка данных на сервер
+func SendDataToServer(ServerAddr string, Data []byte) {
+	resp, err := http.Post(ServerAddr+URL_SEND_DATA, "", bytes.NewBuffer(Data))
+	if err != nil {
+		fmt.Println(STRING_ERROR_CONNECT_SERVER, err.Error())
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		fmt.Println(STRING_ERROR_SERVER_RESPONCE)
+	} else {
+		respData, err := io.ReadAll(resp.Body)
+		if err != nil {
+			fmt.Println(STRING_ERROR_SERVER_RESPONCE, err.Error())
+		}
+
+		if string(respData) != "ok" {
+			fmt.Println(STRING_ERROR_SERVER_RESPONCE)
+		}
+	}
 }
