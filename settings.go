@@ -15,9 +15,9 @@ import (
 func GetDefaultSettings() CommonSettings {
 	var tmp CommonSettings
 
-	tmp.Server = "1.1.1.1:3030"
+	tmp.Server = SERVER_ADDRESS
 	tmp.Storage = DIRECTORY_NAME_FOR_SAVE
-	tmp.User = "Unknown"
+	tmp.User = USER_NAME
 
 	return tmp
 }

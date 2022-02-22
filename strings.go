@@ -5,16 +5,21 @@
 package main
 
 const FILE_NAME_SETTINGS = "informer.json"
+const SERVER_ADDRESS = "127.0.0.1:3030"
 const DIRECTORY_NAME_FOR_SAVE = "data"
+const USER_NAME = "Unknown"
 
 const STRING_BANNER = "=======================================================\n" +
 	"| Утилита сбора краткой информации о системе. Вер.:1.00\n" +
 	"======================================================="
 
-const STRING_ERROR_READ_SETTINGS_FILE = "(W) Чтение файла настроек невозможно. Настройки установлены по-умолчанию."
-const STRING_ERROR_SETTINGS_FILE = "(W) Ошибка обработки файла настроек. Настройки установлены по-умолчанию."
-const STRING_ERROR_CONNECT_SERVER = "(W) Ошибка связи с сервером."
-const STRING_ERROR_SERVER_RESPONCE = "(W) Неверный код ответа сервера."
+const STRING_ERROR_READ_SETTINGS_FILE = "(E) Чтение файла настроек невозможно. Настройки установлены по-умолчанию."
+const STRING_ERROR_SETTINGS_FILE = "(E) Ошибка обработки файла настроек. Настройки установлены по-умолчанию."
+const STRING_ERROR_CONNECT_SERVER = "(E) Ошибка связи с сервером."
+const STRING_ERROR_SERVER_RESPONCE = "(E) Неверный код ответа сервера."
+
+const STRING_ERROR_LOCATION_STRUCT = "(E) Ошибка в структуре описания расположения."
+const STRING_ERROR_LOCATION_EXIST = "(E) Информация о данном расположении уже имеется на сервере."
 
 const STRING_SERVER_TEST = "> Проверка связи с сервером:"
 const STRING_SERVER_AVAILABLE = "Сервер доступен"

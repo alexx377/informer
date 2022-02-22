@@ -7,6 +7,7 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"io"
 	"net/http"
 )
 
@@ -20,13 +21,27 @@ func NetServerPing(ServerAddr string) bool {
 	}
 	defer resp.Body.Close()
 
-	if resp.StatusCode != 200 {
+	if resp.StatusCode != http.StatusOK {
 		fmt.Println(STRING_ERROR_SERVER_RESPONCE)
 
 		return false
 	}
 
-	//TODO:Реализовать проверку тела ответа
+	//Проверка тела ответа сервера
+	respData, err := io.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println(STRING_ERROR_SERVER_RESPONCE)
+
+		return false
+	}
+
+	if string(respData) != "pong" {
+		fmt.Println(STRING_ERROR_SERVER_RESPONCE)
+
+		return false
+	}
+
+	//Все проверки пройдены
 	return true
 }
 
@@ -41,12 +56,24 @@ func NetLocationExist(ServerAddr string, Location string) bool {
 		return false
 	}
 
-	if resp.StatusCode != 200 {
+	if resp.StatusCode != http.StatusOK {
 		fmt.Println(STRING_ERROR_SERVER_RESPONCE)
 
 		return false
 	}
 
-	//TODO:Реализовать проверку тела ответа
+	//Проверка тела ответа сервера
+	respData, err := io.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println(STRING_ERROR_SERVER_RESPONCE)
+
+		return false
+	}
+
+	if string(respData) != "exist" {
+		fmt.Println(STRING_ERROR_SERVER_RESPONCE)
+
+		return false
+	}
 	return true
 }

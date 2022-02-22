@@ -4,11 +4,18 @@
 
 package main
 
+//Префиксы мест расположения
+type Prefix struct {
+	Prefix      string `json: "prefix"`
+	Description string `json: "description"`
+}
+
 //Общие настройки программы.
 type CommonSettings struct {
-	Server  string `json:"server"`
-	Storage string `json:"storage"`
-	User    string `json:"user"`
+	Server   string   `json:"server"`
+	Storage  string   `json:"storage"`
+	User     string   `json:"user"`
+	Prefixes []Prefix `json:"prefixes"`
 }
 
 //Данные о материнской плате.

@@ -1,5 +1,31 @@
 {
     "server": "127.0.0.1:3030",
     "storage": "data",
-    "user": "UnknownAdministrator"
+    "user": "UnknownAdministrator",
+    "prefixes": [
+        {
+            "prefix": "l68k",
+            "description": ""
+        },
+        {
+            "prefix": "l68ak",
+            "description": ""
+        },
+        {
+            "prefix": "s27k",
+            "description": ""
+        },
+        {
+            "prefix": "s22k",
+            "description": ""
+        },
+        {
+            "prefix": "s71k",
+            "description": ""
+        },
+        {
+            "prefix": "a84k",
+            "description": ""
+        }
+    ]
 }
