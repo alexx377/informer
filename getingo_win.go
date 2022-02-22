@@ -6,3 +6,10 @@
 // +build windows
 
 package main
+
+//Получение основных сведений о системе
+func GetMainInfo() Info {
+	var tmp Info
+
+	return tmp
+}

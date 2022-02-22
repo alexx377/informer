@@ -4,28 +4,40 @@
     "user": "UnknownAdministrator",
     "prefixes": [
         {
-            "prefix": "l68k",
-            "description": ""
+            "prefix": "l68",
+            "description": "Ленина, 68"
         },
         {
-            "prefix": "l68ak",
-            "description": ""
+            "prefix": "l68a",
+            "description": "Ленина, 68а(Общежитие)"
         },
         {
-            "prefix": "s27k",
-            "description": ""
+            "prefix": "s27",
+            "description": "Союза Республик, 27(Лабораторный корпус)"
         },
         {
-            "prefix": "s22k",
-            "description": ""
+            "prefix": "s22",
+            "description": "П.Сухова, 22"
         },
         {
-            "prefix": "s71k",
-            "description": ""
+            "prefix": "s71",
+            "description": "П.Сухова, 71"
         },
         {
-            "prefix": "a84k",
-            "description": ""
+            "prefix": "s71m",
+            "description": "П.Сухова, 71(Мастерские)"
+        },
+        {
+            "prefix": "g7a",
+            "description": "Глушкова, 7а(Общежитие)"
+        },
+        {
+            "prefix": "a84",
+            "description": "Э.Алексеевой, 84"
+        },
+        {
+            "prefix": "a84m",
+            "description": "Э.Алексеевой, 84(Мастерские)"
         }
     ]
 }

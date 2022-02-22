@@ -84,7 +84,15 @@ type Info struct {
 }
 
 //Внутренние типы данных(не для экспотра)
+//Имформация о расположении оборудования
 type InfoLocation struct {
 	Location    string
 	Description string
+}
+
+//Общая информация о системе
+type InfoCommon struct {
+	ComputerName string
+	OS           string
+	Platform     string
 }
