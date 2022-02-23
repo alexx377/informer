@@ -59,11 +59,13 @@ const STRING_LOCATION_SUMMARY = "Код расположения: "
 const STRING_LOCATION_DESCRIPTION_SUMMARY = "Комментарий к рабочему месту:"
 const STRING_LOCATION_NO_COMMENT = "[Без комментариев]"
 
+const STRING_SERVER_RESP = "(Ok) Код рабочего места уникален."
+
 const STRING_STAGE_1 = "Шаг 1: Сбор базовых данных о системе..."
 const STRING_STAGE_2 = "Шаг 2: Сбор данных о сетевых адаптерах..."
 const STRING_STAGE_3 = "Шаг 3: Сбор данных об аппаратной части..."
 
-const STRING_DATA_LOCAL_SAVED = "(Ok) Данные сохранены локально."
-const STRING_DATA_REMOTE_SAVED = "(Ok) Данные переданы на сервер."
+const STRING_DATA_LOCAL_SAVED = "(Ok) Попытка локального сохранения завершена."
+const STRING_DATA_REMOTE_SAVED = "(Ok) Попытка удаленного сохранения завершена."
 
 const STRING_READY_MESSAGE = "Данные собраны успешно."

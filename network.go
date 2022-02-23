@@ -49,7 +49,7 @@ func NetServerPing(ServerAddr string) bool {
 func NetLocationExist(ServerAddr string, Location string) bool {
 	req := []byte(`{ "location": "` + Location + `" }`)
 
-	resp, err := http.Post(ServerAddr+URL_CHECK_LOCATION, "", bytes.NewBuffer(req))
+	resp, err := http.Post(ServerAddr+URL_CHECK_LOCATION, "application/json", bytes.NewBuffer(req))
 	if err != nil {
 		fmt.Println(STRING_ERROR_CONNECT_SERVER, err.Error())
 
@@ -71,16 +71,17 @@ func NetLocationExist(ServerAddr string, Location string) bool {
 	}
 
 	if string(respData) != "exist" {
-		fmt.Println(STRING_ERROR_SERVER_RESPONCE)
+		fmt.Println(STRING_SERVER_RESP)
 
 		return false
 	}
+
 	return true
 }
 
 //Отправка данных на сервер
 func SendDataToServer(ServerAddr string, Data []byte) {
-	resp, err := http.Post(ServerAddr+URL_SEND_DATA, "", bytes.NewBuffer(Data))
+	resp, err := http.Post(ServerAddr+URL_SEND_DATA, "application/json", bytes.NewBuffer(Data))
 	if err != nil {
 		fmt.Println(STRING_ERROR_CONNECT_SERVER, err.Error())
 	}

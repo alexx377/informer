@@ -75,9 +75,9 @@ func GetProcessorInfo() []InfoProcessor {
 	}
 
 	//Сведение логических процессоров к физическим
-	id := int64(-1)
+	id := -1
 	for _, currentProcessor := range logicalProcessorsParams {
-		cid, err := strconv.ParseInt(currentProcessor["core id"], 10, 64)
+		cid, err := strconv.Atoi(currentProcessor["physical id"])
 		if err != nil {
 			fmt.Println(STRING_PROCESSOR_ERROR, err.Error())
 		}

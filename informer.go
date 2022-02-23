@@ -121,6 +121,7 @@ func main() {
 	//При наличии связи, передача данных на сервер
 	if serverOnLink {
 		SendDataToServer(currentSettings.Server, jsonInfo)
+		fmt.Println(STRING_DATA_REMOTE_SAVED)
 	}
 
 	//Сохранение собранных данных в локальный файл
