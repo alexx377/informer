@@ -3,7 +3,7 @@
 all: informer
 
 pack: informer
-	tar -czvf ./pack/informer.tar.gz --directory=bin/ informer informer.exe informer.json
+	zip -9 -j -o ./pack/informer.zip ./bin/informer ./bin/informer.exe ./informer.json
 
 clean:
 	rm -rf ./bin/*

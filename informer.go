@@ -28,6 +28,13 @@ func SaveFile(Folder string, FileName string, Data string) {
 				fmt.Println(STRING_LOCAL_SAVE_ERROR, err.Error())
 				return
 			}
+
+			fileInfo, err = os.Stat(Folder)
+			if err != nil {
+				//Директория не создалась
+				fmt.Println(STRING_LOCAL_SAVE_ERROR, err.Error())
+				return
+			}
 		} else {
 			//Другие ошибки
 			fmt.Println(STRING_LOCAL_SAVE_ERROR, err.Error())
@@ -111,14 +118,14 @@ func main() {
 		os.Exit(1)
 	}
 
-	//Сохранение собранных данных в локальный файл
-	//SaveFile(currentSettings.Storage, mainInfo.Location+".json", string(jsonInfo))
-	fmt.Println(STRING_DATA_LOCAL_SAVED)
-
 	//При наличии связи, передача данных на сервер
 	if serverOnLink {
 		SendDataToServer(currentSettings.Server, jsonInfo)
 	}
+
+	//Сохранение собранных данных в локальный файл
+	SaveFile(currentSettings.Storage, mainInfo.Location+".json", string(jsonInfo))
+	fmt.Println(STRING_DATA_LOCAL_SAVED)
 
 	//Завершение
 	fmt.Println(LINE)
