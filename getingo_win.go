@@ -163,15 +163,19 @@ func GetMainInfo() Info {
 		VideoController.Model = v.Name
 		VideoController.Chip = v.VideoProcessor
 		VideoController.Memory = v.AdapterRAM
+
+		tmp.VideoControllers = append(tmp.VideoControllers, VideoController)
 	}
 
 	//Обработка информации о дисках
 	for _, v := range DiskDrive {
-		var HardDisks InfoHardDisk
+		var HardDisk InfoHardDisk
 
-		HardDisks.Model = v.Model
-		HardDisks.SerialNumber = v.SerialNumber
-		HardDisks.Capacity = v.Size
+		HardDisk.Model = v.Model
+		HardDisk.SerialNumber = v.SerialNumber
+		HardDisk.Capacity = v.Size
+
+		tmp.HardDisks = append(tmp.HardDisks, HardDisk)
 	}
 
 	return tmp
